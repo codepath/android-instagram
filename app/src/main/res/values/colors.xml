@@ -2,7 +2,8 @@
 <resources>
 
     <color name="light_gray_text">#A5A7AA</color>
+    <color name="gray_text">#4B4F54</color>
     <color name="light_gray_separator_line">#A5A7AA</color>
-    <color name="blue_user_name">#125688</color>
+    <color name="blue_text">#125688</color>
 
 </resources>
