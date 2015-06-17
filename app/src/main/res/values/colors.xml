@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="light_gray_text">#A5A7AA</color>
+    <color name="light_gray_separator_line">#A5A7AA</color>
+    <color name="blue_user_name">#125688</color>
+
+</resources>
