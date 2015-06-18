@@ -12,11 +12,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
     private static final String TAG = "Utils";
+    private static final NumberFormat numberFormat;
+
+    static {
+        numberFormat = NumberFormat.getInstance();
+        numberFormat.setGroupingUsed(true);
+    }
+
+    public static String formatNumberForDisplay(int number) {
+        return numberFormat.format(number);
+    }
 
     public static JSONObject loadJsonFromAsset(Context context, String fileName) throws IOException, JSONException {
         InputStream inputStream = context.getResources().getAssets().open(fileName);
