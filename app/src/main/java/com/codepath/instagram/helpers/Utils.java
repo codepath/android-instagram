@@ -2,6 +2,7 @@ package com.codepath.instagram.helpers;
 
 import android.content.Context;
 
+import com.codepath.instagram.models.InstagramComment;
 import com.codepath.instagram.models.InstagramPost;
 
 import org.json.JSONArray;
@@ -58,5 +59,17 @@ public class Utils {
             }
         }
         return posts;
+    }
+
+    private static List<InstagramComment> decodeCommentsFromJson(JSONObject jsonObject) throws JSONException {
+        List<InstagramComment> comments = new ArrayList<>();
+        JSONArray commentsJson = jsonObject.optJSONArray("data");
+        if (commentsJson != null) {
+            for (int i = 0; i < commentsJson.length(); i++) {
+                InstagramComment instagramComment = InstagramComment.fromJson(commentsJson.getJSONObject(i));
+                comments.add(instagramComment);
+            }
+        }
+        return comments;
     }
 }
