@@ -61,7 +61,7 @@ public class Utils {
         return posts;
     }
 
-    private static List<InstagramComment> decodeCommentsFromJson(JSONObject jsonObject) throws JSONException {
+    public static List<InstagramComment> decodeCommentsFromJson(JSONObject jsonObject) throws JSONException {
         List<InstagramComment> comments = new ArrayList<>();
         JSONArray commentsJson = jsonObject.optJSONArray("data");
         if (commentsJson != null) {
