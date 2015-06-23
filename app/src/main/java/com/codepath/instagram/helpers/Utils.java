@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.codepath.instagram.models.InstagramComment;
 import com.codepath.instagram.models.InstagramPost;
+import com.codepath.instagram.models.InstagramSearchTag;
+import com.codepath.instagram.models.InstagramUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,27 +51,31 @@ public class Utils {
         return result;
     }
 
-    public static List<InstagramPost> decodePostsFromJson(JSONObject jsonObject) throws JSONException {
-        List<InstagramPost> posts = new ArrayList<>();
-        JSONArray postsJson = jsonObject.optJSONArray("data");
-        if (postsJson != null) {
-            for (int i = 0; i < postsJson.length(); i++) {
-                InstagramPost instagramPost = InstagramPost.fromJson(postsJson.getJSONObject(i));
-                posts.add(instagramPost);
-            }
-        }
-        return posts;
+    public static List<InstagramPost> decodePostsFromJsonResponse(JSONObject jsonObject) {
+        List<InstagramPost> posts = InstagramPost.fromJson(getDataJsonArray(jsonObject));
+        return posts == null ? new ArrayList<InstagramPost>() : posts;
     }
 
-    public static List<InstagramComment> decodeCommentsFromJson(JSONObject jsonObject) throws JSONException {
-        List<InstagramComment> comments = new ArrayList<>();
-        JSONArray commentsJson = jsonObject.optJSONArray("data");
-        if (commentsJson != null) {
-            for (int i = 0; i < commentsJson.length(); i++) {
-                InstagramComment instagramComment = InstagramComment.fromJson(commentsJson.getJSONObject(i));
-                comments.add(instagramComment);
-            }
+    public static List<InstagramComment> decodeCommentsFromJsonResponse(JSONObject jsonObject) {
+        List<InstagramComment> comments = InstagramComment.fromJson(getDataJsonArray(jsonObject));
+        return comments == null ? new ArrayList<InstagramComment>() : comments;
+    }
+
+    public static List<InstagramUser> decodeUsersFromJsonResponse(JSONObject jsonObject) {
+        List<InstagramUser> users = InstagramUser.fromJson(getDataJsonArray(jsonObject));
+        return users == null ? new ArrayList<InstagramUser>() : users;
+    }
+
+    public static List<InstagramSearchTag> decodeSearchTagsFromJsonResponse(JSONObject jsonObject) {
+        List<InstagramSearchTag> searchTags = InstagramSearchTag.fromJson(getDataJsonArray(jsonObject));
+        return searchTags == null ? new ArrayList<InstagramSearchTag>() : searchTags;
+    }
+
+    private static JSONArray getDataJsonArray(JSONObject jsonObject) {
+        JSONArray jsonArray = null;
+        if (jsonObject != null) {
+            jsonArray = jsonObject.optJSONArray("data");
         }
-        return comments;
+        return jsonArray;
     }
 }

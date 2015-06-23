@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InstagramComment implements Serializable {
     public InstagramUser user;
@@ -30,12 +31,12 @@ public class InstagramComment implements Serializable {
         return comment;
     }
 
-    public static ArrayList<InstagramComment> fromJson(JSONArray jsonArray) {
+    public static List<InstagramComment> fromJson(JSONArray jsonArray) {
         if (jsonArray == null) {
             return null;
         }
 
-        ArrayList<InstagramComment> comments = new ArrayList<InstagramComment>();
+        List<InstagramComment> comments = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject;
             try {

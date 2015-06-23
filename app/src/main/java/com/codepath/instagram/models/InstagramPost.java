@@ -1,16 +1,18 @@
 package com.codepath.instagram.models;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InstagramPost implements Serializable {
     public String mediaId;
     public InstagramUser user;
     public InstagramImage image;
-    public ArrayList<InstagramComment> comments;
+    public List<InstagramComment> comments;
     public String caption;
     public int likesCount;
     public int commentsCount;
@@ -57,4 +59,27 @@ public class InstagramPost implements Serializable {
         }
         return post;
     }
+
+    public static List<InstagramPost> fromJson(JSONArray jsonArray) {
+        if (jsonArray == null) {
+            return null;
+        }
+
+        List<InstagramPost> posts = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject;
+            try {
+                jsonObject = jsonArray.getJSONObject(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+                continue;
+            }
+            InstagramPost post = InstagramPost.fromJson(jsonObject);
+            if (post != null) {
+                posts.add(post);
+            }
+        }
+        return posts;
+    }
+
 }
