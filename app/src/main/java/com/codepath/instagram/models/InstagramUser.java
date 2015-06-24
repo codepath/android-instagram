@@ -10,8 +10,7 @@ import java.util.List;
 
 public class InstagramUser implements Serializable {
     public String userName;
-    public String firstName;
-    public String lastName;
+    public String fullName;
     public String profilePictureUrl;
     public String userId;
 
@@ -25,8 +24,7 @@ public class InstagramUser implements Serializable {
         try {
             user.userId = jsonObject.getString("id");
             user.userName = jsonObject.getString("username");
-            user.firstName = jsonObject.optString("first_name", "");
-            user.lastName = jsonObject.optString("last_name", "");
+            user.fullName = jsonObject.optString("full_name", "");
             user.profilePictureUrl = jsonObject.getString("profile_picture");
         } catch (JSONException e) {
             e.printStackTrace();

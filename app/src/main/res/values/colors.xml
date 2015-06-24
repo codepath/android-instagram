@@ -7,5 +7,7 @@
     <color name="blue_text">#125688</color>
     <color name="instagram_blue">#00538B</color>
     <color name="blue_status_bar">#004876</color>
+    <color name="search_tab_bar_background">#EEEEEE</color>
+    <color name="placeholder_image">#BBBBBB</color>
 
 </resources>
