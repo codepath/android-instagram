@@ -15,6 +15,7 @@ public class InstagramPost implements Serializable {
     public List<InstagramComment> comments;
     public String caption;
     public int likesCount;
+    public List<InstagramUser> likers;
     public int commentsCount;
     public long createdTime;
 
@@ -46,6 +47,8 @@ public class InstagramPost implements Serializable {
 
             JSONObject likesJson = jsonObject.optJSONObject("likes");
             post.likesCount = likesJson != null ? likesJson.optInt("count") : 0;
+            JSONArray likersJson = likesJson != null ? likesJson.optJSONArray("data") : null;
+            post.likers = likersJson != null ? InstagramUser.fromJson(likersJson) : null;
 
             JSONObject commentsJson = jsonObject.optJSONObject("comments");
             post.commentsCount = commentsJson != null ? commentsJson.optInt("count") : 0;
