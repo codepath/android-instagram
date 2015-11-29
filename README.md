@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the starter project for the Instagram Client Project. 
+This is the starter project for the Instagram Client Project using Fresco. 
 
 ## What's Included
 * <tt>com.codepath.instagram.models</tt> => We've built out the models so you can work directly with post, user, and image objects instead of having to deal with json.
