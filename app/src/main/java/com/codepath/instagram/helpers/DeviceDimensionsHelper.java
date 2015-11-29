@@ -28,7 +28,6 @@ public class DeviceDimensionsHelper {
     public static float convertPixelsToDp(float px, Context context){
         Resources r = context.getResources();
         DisplayMetrics metrics = r.getDisplayMetrics();
-        float dp = px / (metrics.densityDpi / 160f);
-        return dp;
+        return px / (metrics.densityDpi / 160f);
     }
 }
